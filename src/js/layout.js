@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home  from "./views/Home.js";
 import injectContext from "./store/appContext";
+
+import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 
 
@@ -15,6 +17,7 @@ const Layout = () => {
 	return (
 		<div>
 			<BrowserRouter basename={basename}>
+				<Navbar />
 					<Routes>
 						<Route exact path="/" element={<Home />}>
 						</Route>
