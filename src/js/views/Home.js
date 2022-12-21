@@ -4,6 +4,7 @@ import DateOut from "../components/DateOut.jsx";
 import Passengers from "../components/Passengers.jsx";
 import TimeIn from "../components/TimeIn.jsx";
 import "../../styles/Home.css";
+import TimeOut from "../components/TimeOut.jsx";
 
 const Home = ()=>{
     return(<>
@@ -15,13 +16,13 @@ const Home = ()=>{
                 </header>
             </div>
             <div className="container fluid">
-                <div className="position-absolute top-50 start-50 translate-middle mt-5 formulario mb-5">
+                <div className="position-absolute top-50 start-50 translate-middle mt-5 formulario mb-5 pb-3 pt-1">
                     <div className="d-flex flex-column justify-content-start align-items-center align-content-center mt-2 mb-2">
                         <div><DateIn /></div>
                         <div className="mt-1"><DateOut /></div>
                         <div className="mt-3"><Passengers /></div>
                         <div className="mt-3"><TimeIn /></div>
-                        <div>returning time</div>
+                        <div className="mt-1"><TimeOut /></div>
                     </div>
                 </div>
             </div>
