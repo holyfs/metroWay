@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/Home.css";
 
 const Home = ()=>{
     return(<>
@@ -10,9 +11,11 @@ const Home = ()=>{
                 </header>
             </div>
             <div className="container fluid">
-                <div className="position-absolute top-50 start-50 translate-middle">
-
-                Formulario
+                <div className="position-absolute top-50 start-50 translate-middle mt-5 formulario">
+                    <div className="d-flex flex-column justify-content-start align-items-center align-content-center">
+                    <div className="mt-2">Ida</div>
+                    <div className="mt-2">Vuelta</div>
+                    </div>
                 </div>
             </div>
         </div>
