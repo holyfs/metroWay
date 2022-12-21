@@ -3,8 +3,9 @@ import DateIn from "../components/DateIn.jsx";
 import DateOut from "../components/DateOut.jsx";
 import Passengers from "../components/Passengers.jsx";
 import TimeIn from "../components/TimeIn.jsx";
-import "../../styles/Home.css";
 import TimeOut from "../components/TimeOut.jsx";
+import SearchButton from "../components/SearchButton.jsx";
+import "../../styles/Home.css";
 
 const Home = ()=>{
     return(<>
@@ -23,6 +24,11 @@ const Home = ()=>{
                         <div className="mt-3"><Passengers /></div>
                         <div className="mt-3"><TimeIn /></div>
                         <div className="mt-1"><TimeOut /></div>
+                    </div>
+                    <div className="d-flex flex-column justify-content-end align-items-end align-content-end mt-5 mb-2 me-2">
+                        <div>
+                            <SearchButton />
+                        </div>
                     </div>
                 </div>
             </div>
