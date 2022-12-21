@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const Passengers=()=>{
+const Passengers=({ changed })=>{
+    const [value, setValue]=useState(null);
+
     return(<>
         <Box
             component="form"
@@ -18,6 +20,7 @@ const Passengers=()=>{
                     size="medium"
                     label="Passengers"
                     type="number"
+                    onChange={(event) => changed(event.target.value)}
                     InputLabelProps={{
                         shrink: true,
                     }}

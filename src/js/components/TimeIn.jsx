@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 
-const TimeIn=()=>{
+const TimeIn=({ changed })=>{
     const [value, setValue] = useState(null);
     return(<>
         <LocalizationProvider dateAdapter={AdapterMoment}>
@@ -13,6 +13,7 @@ const TimeIn=()=>{
         value={value}
         onChange={(newValue) => {
           setValue(newValue);
+          changed(newValue);
         }}
         renderInput={(params) => <TextField {...params} />}
       />

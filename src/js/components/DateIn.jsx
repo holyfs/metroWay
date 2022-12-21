@@ -5,7 +5,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-const DateIn=()=>{
+const DateIn=({ changed })=>{
     const { store, actions } = useContext(Context);
     const [value, setValue] = useState(null);
 
@@ -15,8 +15,8 @@ const DateIn=()=>{
                 label="Departing"
                 value={value}
                 onChange={(newValue) => {
-                    console.log(newValue)
                     setValue(newValue);
+                    changed(newValue);
                   }}
                 renderInput={(params) => <TextField {...params} />}
             />
