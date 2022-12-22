@@ -50,7 +50,7 @@ const SearchForm=()=>{
     },[])
 
     const onSubmit=(dTD,dTA,nOP)=>{
-        if(dTD.length > 0 && dTA.length > 0 && nOP.length > 0){
+        if(dTD.length > 0  && nOP.length > 0){
         formJson(dTD,dTA,nOP)
         actions.StoreTravelInfo(dTD,dTA,nOP)
         } 
