@@ -1,22 +1,28 @@
-import React, { useState } from "react";
-import moment from 'moment';
+import React, { useState, useEffect } from "react";
+/* import { useForm } from "react-hook-form"; */
+/* import moment from 'moment'; */
 import DateIn from "../components/DateIn.jsx";
 import DateOut from "../components/DateOut.jsx";
 import Passengers from "../components/Passengers.jsx";
 /* import TimeIn from "../components/TimeIn.jsx";
 import TimeOut from "../components/TimeOut.jsx"; */
-import SearchButton from "../components/SearchButton.jsx";
+/* import SearchButton from "../components/SearchButton.jsx"; */
 
 
 const SearchForm=()=>{
+    const [travelInfo, setTravelInfo]= useState({
+        date_time_depart:null,
+        date_time_arrival:null,
+        number_of_passengers:null,
+/*         time_in: " ",
+        time_out: " " */
+    })
+/*     const { register, handleSubmit, watch, formState: { errors } } = useForm(); */
     const [date_time_depart, setDate_time_depart]=useState(null);
     const [date_time_arrival, setDate_time_arrival]=useState(null);
     const [number_of_passengers, setNumber_of_passengers]=useState(null);
 /*     const [time_in, setTime_in]=useState(null);
     const [time_out, setTime_out]=useState(null); */
-    console.log("este de ir"+date_time_depart);
-    console.log("llegada"+date_time_arrival);
-    console.log("pasajeros"+number_of_passengers);
 /*     console.log("tiempo"+time_in);
     console.log("tiempoOut"+time_out); */
 
@@ -28,21 +34,29 @@ const SearchForm=()=>{
         console.log(value.format("DD"+"/"+"MM"+"/"+"YY"))
     } */
 
-/*     const handleChanged = (value) => {
-        if(typeof value==="object"){
-            valueDateFormatDTDepart(value)
-        }else if(typeof value==="string"){
-            console.log(value)
-        }
+/*     const handleChanged = (e) => {
+        console.log(e)
+        setTravelInfo({
+            date_time_depart:depart,
+            date_time_arrival:arrival,
+            number_of_passengers:passengers
+        })
+        console.log(travelInfo);
     } */
+    useEffect(()=>{
+        formJson(date_time_depart,date_time_arrival,number_of_passengers)
+    },[date_time_depart,date_time_arrival,number_of_passengers])
 
-    const [travelInfo, setTravelInfo]= useState({
-        date_time_depart:" ",
-        date_time_arrival:" ",
-        number_of_passengers: " ",
-        time_in: " ",
-        time_out: " "
-    })
+    const formJson=(dTD,dTA,nOP)=>{
+        setTravelInfo({
+            date_time_depart: dTD,
+            date_time_arrival:dTA,
+            number_of_passengers:nOP
+        })
+        console.log(travelInfo);
+    }
+
+    
     return(<>
         <div className="position-absolute top-50 start-50 translate-middle mt-5 formulario mb-5 pb-3 pt-1 mt-5">
             <div className="d-flex flex-column justify-content-start align-items-center align-content-center mt-2 mb-2">
@@ -53,9 +67,14 @@ const SearchForm=()=>{
                 <div className="mt-1"><TimeOut changed={(value) => setTime_out(value)} /></div> */}
             </div>
             <div className="d-flex flex-column justify-content-end align-items-end align-content-end mt-5 mb-2 me-2">
-            <div>
-                <SearchButton />
-            </div>
+
+                <button 
+                type="submit" 
+                className="btn btn-primary" 
+                onClick={()=>formJson(date_time_depart,date_time_arrival,number_of_passengers)}>
+                    Search
+                </button>
+
             </div>
         </div>
     </>);
