@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 /* import { useForm } from "react-hook-form"; */
 /* import moment from 'moment'; */
 import DateIn from "../components/DateIn.jsx";
@@ -10,6 +11,7 @@ import TimeOut from "../components/TimeOut.jsx"; */
 
 
 const SearchForm=()=>{
+    const { store, actions } = useContext(Context);
     const [travelInfo, setTravelInfo]= useState({
         date_time_depart:null,
         date_time_arrival:null,
@@ -45,15 +47,20 @@ const SearchForm=()=>{
     } */
     useEffect(()=>{
         formJson(date_time_depart,date_time_arrival,number_of_passengers)
-    },[date_time_depart,date_time_arrival,number_of_passengers])
+    },[])
 
+    const onSubmit=(dTD,dTA,nOP)=>{
+        if(dTD.length > 0 && dTA.length > 0 && nOP.length > 0){
+        formJson(dTD,dTA,nOP)
+        actions.StoreTravelInfo(dTD,dTA,nOP)
+        } 
+    }
     const formJson=(dTD,dTA,nOP)=>{
         setTravelInfo({
             date_time_depart: dTD,
             date_time_arrival:dTA,
             number_of_passengers:nOP
         })
-        console.log(travelInfo);
     }
 
     
@@ -71,7 +78,8 @@ const SearchForm=()=>{
                 <button 
                 type="submit" 
                 className="btn btn-primary" 
-                onClick={()=>formJson(date_time_depart,date_time_arrival,number_of_passengers)}>
+                onClick={()=>onSubmit(date_time_depart,date_time_arrival,number_of_passengers)}
+                >
                     Search
                 </button>
 
