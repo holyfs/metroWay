@@ -1,17 +1,16 @@
-import React, { useState, useContext } from "react";
-import { Context } from "../store/appContext";
+import React, { useState } from "react";
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import TextField from '@mui/material/TextField';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 const DateIn=({ changed })=>{
-    const { store, actions } = useContext(Context);
     const [value, setValue] = useState(null);
+
 
     return (<>
         <LocalizationProvider dateAdapter={AdapterMoment}>
-            <DatePicker
+            <DateTimePicker
                 label="Departing"
                 value={value}
                 onChange={(newValue) => {

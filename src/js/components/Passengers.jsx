@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 const Passengers=({ changed })=>{
-    const [value, setValue]=useState(null);
 
     return(<>
         <Box
             component="form"
             sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
+                '& .MuiTextField-root': { m: 1, width: 'auto' },
             }}
             noValidate
             autoComplete="off"

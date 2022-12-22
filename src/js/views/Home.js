@@ -6,13 +6,9 @@ import SearchForm from "../components/SearchForm.jsx";
 const Home = ()=>{
     return(<>
         <div className="container fluid">
-            <div className="container fluid mt-5 mb-3">
-                <div className="text-center">
-                    <header>
-                        <h1>Get your tickets to our solar train</h1>
-                        <h3>Connecting Paris to London</h3>
-                    </header>
-                </div>
+            <div className="text-center mt-5 mb-3">
+                <h1>Get your tickets to our solar train</h1>
+                <h3>Connecting Paris to London</h3>
             </div>
             <div className="container fluid">
                 <SearchForm />
