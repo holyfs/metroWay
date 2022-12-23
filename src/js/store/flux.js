@@ -21,18 +21,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 		},
 		actions: {
-			StoreTravelInfo : (date_time_depart,date_time_arrival,number_of_passengers) => {
-				const store = getStore();
+			StoreTravelInfo : (date_time_depart,date_time_arrival,number_of_passengers,origin,destination) => {
 				const newTravel = {};
 				newTravel.date_time_depart = date_time_depart;
 				newTravel.date_time_arrival = date_time_arrival;
 				newTravel.number_of_passengers = number_of_passengers;
-				/* 				newTravel.time_in = time_in;
-				newTravel.time_out = time_out; */
-				const auxTravel = [...store.travelInfoStore, newTravel]; 		
-				console.log(auxTravel)
-				
-				setStore({ travelInfoStore: auxTravel });
+				newTravel.origin = origin;
+				newTravel.destination = destination; 						
+				setStore({ travelInfoStore: newTravel });
 			},
 
 			GetPeople : () => {
