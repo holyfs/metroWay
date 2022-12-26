@@ -1,3 +1,4 @@
+import moment from "moment";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -5,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicles:[],
 			planets:[],
 			travelInfoStore:[],
+			availableTickets:[],
 			favorites: [],
 			demo: [
 				{
@@ -21,33 +23,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 		},
 		actions: {
-			StoreTravelInfo : (date_time_depart,date_time_arrival,number_of_passengers) => {
-				const store = getStore();
+			StoreTravelInfo : (date_time_depart,date_time_arrival,number_of_passengers,origin) => {
 				const newTravel = {};
 				newTravel.date_time_depart = date_time_depart;
 				newTravel.date_time_arrival = date_time_arrival;
 				newTravel.number_of_passengers = number_of_passengers;
-				/* 				newTravel.time_in = time_in;
-				newTravel.time_out = time_out; */
-				const auxTravel = [...store.travelInfoStore, newTravel]; 		
-				console.log(auxTravel)
-				
-				setStore({ travelInfoStore: auxTravel });
+				newTravel.origin = origin;
+				if(newTravel.origin==="Paris"){
+					newTravel.destination="London"
+				}else if(newTravel.origin==="London"){
+					newTravel.destination="Paris"
+				}else{
+					newTravel.destination="null"
+				}								
+				setStore({ travelInfoStore: newTravel });
 			},
 
-			GetPeople : () => {
-				 fetch("https://www.swapi.tech/api/people", {
-				  method: "GET",
-				  headers: {
-					"Content-Type": "application/json",
-				  },
-				}).then((res) => {
-					return res.json();
-				  })
-				  .then((data) => {
-					setStore({personajes:data.results})
-				  }).catch((err) => console.error(err))
-			  },
+			GetTickets : (StoreTravelInfo, train_results) => {
+//				console.log(train_results.length) Tengo que hacer un filter o for para recorrer el arreglo train result y me devuelva solo los que cumplen con StoreTravelInfo.origin 
+//				console.log(moment(train_results[0].date_time_depart).isSameOrAfter(moment(StoreTravelInfo.date_time_depart)))
+				const results = train_results.filter((ticket)=>ticket.origin===StoreTravelInfo.origin && ticket.available_seats>=StoreTravelInfo.number_of_passengers && moment(ticket.date_time_depart).isSameOrAfter(moment(StoreTravelInfo.date_time_depart)));
+					console.log(results)
+					setStore({ availableTickets: results })
+				}, 	
 			  GetPlanets : () => {
 				 fetch("https://www.swapi.tech/api/planets", {
 				  method: "GET",

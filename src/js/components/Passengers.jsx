@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 const Passengers=({ changed })=>{
+const [value, setValue]=useState(null);
 
+const onChange=(event)=>{
+    setValue(changed(event.target.value))
+}
     return(<>
         <Box
             component="form"
@@ -15,13 +19,16 @@ const Passengers=({ changed })=>{
         >
             <div>
                 <TextField
+                    error={value!==null?value:true}
                     id="outlined-number"
                     size="medium"
                     label="Passengers"
                     type="number"
-                    onChange={(event) => changed(event.target.value)}
-                    InputLabelProps={{
-                        shrink: true,
+                    onChange={onChange} 
+                    InputProps={{inputProps:{
+
+                        min:1
+                    }
                     }}
                 />
             </div>
