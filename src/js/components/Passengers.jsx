@@ -25,8 +25,10 @@ const onChange=(event)=>{
                     label="Passengers"
                     type="number"
                     onChange={onChange} 
-                    InputLabelProps={{
-                        shrink: true,
+                    InputProps={{inputProps:{
+
+                        min:1
+                    }
                     }}
                 />
             </div>

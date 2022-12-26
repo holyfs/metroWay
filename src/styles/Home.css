@@ -1,7 +1,14 @@
 .formulario{
-    width: 30%;
-    height: auto;
-    border: 1px solid black;
+    width: 28%;
+    height: 60%;
+    border: 1px solid rgb(195, 213, 229);
     border-radius: 15px;
-    background-color: aliceblue;
+    background-color: rgba(195, 213, 229, 0.793);
+}
+.home{
+    background-image: url("../assets/images/image.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    /* width: 100vh; */
 }

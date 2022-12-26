@@ -7,7 +7,7 @@ const Cart =()=>{
         height: 30+"px"
     }
     return(<>
-    <FaShoppingCart icon="fa-light fa-cart-shopping"  style={cartSize}/>
+    <FaShoppingCart style={cartSize}/>
     </>
     );
 };
