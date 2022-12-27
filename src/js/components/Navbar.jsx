@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import Cart from "./Cart.jsx";
 import { TbTrain } from "react-icons/tb";
+import "../../styles/NavBar.css"
 
 const Navbar = () =>{
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Navbar = () =>{
     return(<>
         <nav className="navbar bg-primary text-white">
             <div className="container-fluid">
-                <div className="text-white ms-2" onClick={()=>goTo()} >
+                <div className="text-white ms-3 icono" onClick={()=>goTo()} >
                     <TbTrain style={cartSize}/> <strong className="p-2 navbar-brand text-white">Metroway</strong>
                 </div>
                 <div className="d-flex justify-center-end me-5">
