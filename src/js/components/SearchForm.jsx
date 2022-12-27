@@ -40,10 +40,9 @@ const SearchForm=()=>{
         actions.StoreTravelInfo(dTD,dTA,nOP,departure)
         navigate("tickets");
         }else if(dTD===null || nOP===null || departure ===null || nOP <= 0){
-            console.log("hay campos requeridos");
+            console.log("form required");
         }
     }
-    console.log(store.travelInfoStore);
     return(<>
         <div className="position-absolute formulario mb-5 p-3">
             <div className="d-flex flex-column justify-content-start align-items-center align-content-center mt-4 mb-2">
