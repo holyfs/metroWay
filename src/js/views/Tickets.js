@@ -6,11 +6,9 @@ import { Context } from "../store/appContext";
 
 const Tickets=()=>{
     const { store, actions } = useContext(Context);
-    /*     console.log(store.travelInfoStore); */
     useEffect(()=>{
         actions.GetTickets(store.travelInfoStore, train_results)
     },[])
-        console.log(store.availableTickets);
     return (
         <>
             <div className="container fluid">
@@ -21,9 +19,8 @@ const Tickets=()=>{
                     </div>
                     <div className="col">
                         <h3 className="mb-2 mt-2">These are the available trains...</h3>
-                        {store.availableTickets ? store.availableTickets.map(ticket => {
-                            console.log(ticket)
-                            return <><div className="mt-2 mb-1">
+                        {store.availableTickets ? store.availableTickets.map((ticket, index) => {
+                            return <><div key={index} className="mt-2 mb-1">
                                 <AvailableTrains
                                     origin={ticket.origin}
                                     destination={ticket.destination}
