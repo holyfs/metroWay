@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			travelInfoStore: [],
 			availableTickets: [],
-			favorites: [],
+			cart: [],
 
 		},
 		actions: {
@@ -28,19 +28,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const results = train_results.filter((ticket) => ticket.origin === StoreTravelInfo.origin && ticket.available_seats >= StoreTravelInfo.number_of_passengers && moment(ticket.date_time_depart).isSameOrAfter(moment(StoreTravelInfo.date_time_depart)));
 				setStore({ availableTickets: results })
 			},
-			listarFavorites: () => {
+			listTickets: () => {
 				const store = getStore();
-				return store.favorites;
+				return store.cart;
 			},
 
-			saveFavorite: (name, id) => {
-				const store = getStore();
-				const newFavorite = {};
-				newFavorite.name = name;
-				newFavorite.id = id;
-				const auxFavorites = [...store.favorites, newFavorite];
-
-				setStore({ favorites: auxFavorites });
+			addToCart: (origin, departTime, arrival, ticketId, destination, passengers) => {
+				const store= getStore();
+				const newTicket = {};
+				newTicket.origin = origin;
+				newTicket.ticketId = ticketId;
+				newTicket.departTime = departTime;
+				newTicket.arrival = arrival;
+				newTicket.passengers = passengers;
+				newTicket.destination = destination;
+				const auxTicket=[...store.cart, newTicket]
+				setStore({ cart: auxTicket });
 			},
 			deleteFavorites: (name) => {
 				const store = getStore();
