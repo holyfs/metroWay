@@ -27,7 +27,6 @@ const Cart =()=>{
         width: 30+"px",
         height: 30+"px"
     }
-    console.log(store.cart);
     return(<>
     <div>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>

@@ -14,8 +14,8 @@ const TicketInCart=({origin, departTime, arrival, ticketId, destination, passeng
                         <h6 className="card-subtitle mb-2 text-muted"><strong>Depart time:</strong> {departTime} </h6>
                         <h6 className="card-subtitle mb-2 text-muted"><strong>Arrival:</strong> {arrival} </h6>
                     </div>
-                    <div className="d-grid gap-2 d-md-block ms-5">
-                        <button className="btn btn-success"  type="button" value="Add to cart">Add to cart</button>
+                    <div className="d-grid gap-2 d-md-block ms-4">
+                        <button className="btn btn-success"  type="button" value="Add to cart">Checkout</button>
                     </div>
                 </div>
             </div>
