@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
+
 import { Context } from "../store/appContext";
 import { SlTrash } from "react-icons/sl";
 
 const TicketInCart=({origin, departTime, arrival, ticketId, destination, passengers})=>{
+
     const { actions } = useContext(Context);
     const trashSize={
         width: 20+"px",
         height: 20+"px"
 }
 const deleteTicket=(id)=>{
-    actions.deleteTickets(id)
+    actions.deleteTickets(id);
+
 }
     return(<>
    <div className="card" style={{ width: 20 + "rem" }}>

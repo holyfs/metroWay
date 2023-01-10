@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom"
 
 const AvailableTrains = ({ origin, departTime, arrival, ticketId, destination, passengers })=>{
     const { actions } = useContext(Context);
+    const navigate = useNavigate();
 
     const addToCart=(origin, departTime, arrival, ticketId, destination, passengers)=>{
         actions.addToCart(origin, departTime, arrival, ticketId, destination, passengers)
+        navigate("/ticketsreturn");
     }
 
     return (<>
