@@ -45,10 +45,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const auxTicket=[...store.cart, newTicket]
 				setStore({ cart: auxTicket });
 			},
-			deleteFavorites: (name) => {
+			deleteTickets: (ticketId) => {
 				const store = getStore();
-				const data = store.favorites.filter((item) => item.name !== name);
-				setStore({ ...store, favorites: data });
+				const data = store.cart.filter((item) => item.ticketId !== ticketId);
+				setStore({ ...store, cart: data });
 			},
 			numFavorites: () => {
 				const store = getStore();

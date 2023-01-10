@@ -19,8 +19,8 @@ const Tickets=()=>{
                     </div>
                     <div className="col">
                         <h3 className="mb-2 mt-2">These are the available trains...</h3>
-                        {store.availableTickets ? store.availableTickets.map((ticket, index) => {
-                            return <><div key={index} className="mt-2 mb-1">
+                        {store.availableTickets ? store.availableTickets.map((ticket) => {
+                            return <div key={ticket.flight_id} className="mt-2 mb-1">
                                 <AvailableTrains
                                     origin={ticket.origin}
                                     destination={ticket.destination}
@@ -28,7 +28,7 @@ const Tickets=()=>{
                                     departTime={ticket.date_time_depart}
                                     ticketId={ticket.flight_id}
                                     passengers={store.travelInfoStore.number_of_passengers}
-                                /></div></>
+                                /></div>
                         }) : "loading..."}
 
                     </div>

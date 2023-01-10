@@ -5,6 +5,8 @@ import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 import TicketInCart from "./TicketInCart.jsx";
 
+
+
 const Cart =()=>{
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -27,6 +29,7 @@ const Cart =()=>{
         width: 30+"px",
         height: 30+"px"
     }
+
     return(<>
     <div>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
@@ -42,7 +45,7 @@ const Cart =()=>{
           horizontal: 'left',
         }}
       >{store.cart?store.cart.map((ticket)=>{
-        return(<> <div key={ticket.tickedId}>
+        return <div key={ticket.tickedId}>
         <TicketInCart 
         origin={ticket.origin}
         destination={ticket.destination}
@@ -53,7 +56,6 @@ const Cart =()=>{
         
     />
     </div>
-    </>)
       }):"...loading"}
         
       </Popover>

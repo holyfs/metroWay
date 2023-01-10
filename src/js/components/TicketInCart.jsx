@@ -1,5 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
+import { SlTrash } from "react-icons/sl";
+
 const TicketInCart=({origin, departTime, arrival, ticketId, destination, passengers})=>{
+    const { actions } = useContext(Context);
+    const trashSize={
+        width: 20+"px",
+        height: 20+"px"
+}
+const deleteTicket=(id)=>{
+    actions.deleteTickets(id)
+}
     return(<>
    <div className="card" style={{ width: 20 + "rem" }}>
             <h5 className="card-title ms-5 mt-3"><strong>Train number:</strong> {ticketId} </h5>
@@ -15,7 +26,7 @@ const TicketInCart=({origin, departTime, arrival, ticketId, destination, passeng
                         <h6 className="card-subtitle mb-2 text-muted"><strong>Arrival:</strong> {arrival} </h6>
                     </div>
                     <div className="d-grid gap-2 d-md-block ms-4">
-                        <button className="btn btn-success"  type="button" value="Add to cart">Checkout</button>
+                        <SlTrash style={trashSize} type="button" onClick={()=>deleteTicket(ticketId)}/>
                     </div>
                 </div>
             </div>

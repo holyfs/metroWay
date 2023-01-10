@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 
 const AvailableTrains = ({ origin, departTime, arrival, ticketId, destination, passengers })=>{
-    const { store, actions } = useContext(Context);
+    const { actions } = useContext(Context);
 
     const addToCart=(origin, departTime, arrival, ticketId, destination, passengers)=>{
         actions.addToCart(origin, departTime, arrival, ticketId, destination, passengers)
