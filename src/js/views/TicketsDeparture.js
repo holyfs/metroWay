@@ -4,7 +4,7 @@ import UserSearch from "../components/UserSearch.jsx";
 import train_results from "../../assets/variables/train_results.json"
 import { Context } from "../store/appContext";
 
-const Tickets=()=>{
+const TicketsDeparture=()=>{
     const { store, actions } = useContext(Context);
     useEffect(()=>{
         actions.GetTickets(store.travelInfoStore, train_results)
@@ -39,4 +39,4 @@ const Tickets=()=>{
     );
 };
 
-export default Tickets;
+export default TicketsDeparture;

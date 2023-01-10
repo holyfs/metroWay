@@ -12,12 +12,12 @@ const Navbar = () =>{
         height: 40+"px"
     }
     const goTo=()=>{
-        navigate(-1);
+        navigate("/");
     }
     return(<>
         <nav className="navbar bg-primary text-white">
             <div className="container-fluid">
-                <div className="text-white ms-3 icono" onClick={()=>goTo()} >
+                <div className="text-white ms-3 icono" type="button" onClick={()=>goTo()} >
                     <TbTrain style={cartSize}/> <strong className="p-2 navbar-brand text-white">Metroway</strong>
                 </div>
                 <div className="d-flex justify-center-end me-5">
