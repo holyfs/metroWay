@@ -5,7 +5,6 @@ import train_results from "../../assets/variables/train_results.json"
 import { Context } from "../store/appContext";
 
 const TicketsReturn=()=>{
-    return 
      const { store, actions } = useContext(Context);
     useEffect(()=>{
         actions.GetTickets(store.travelInfoStore, train_results)

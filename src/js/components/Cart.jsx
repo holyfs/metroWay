@@ -9,6 +9,10 @@ import TicketInCart from "./TicketInCart.jsx";
 
 const Cart =()=>{
     const [anchorEl, setAnchorEl] = useState(null);
+    const { store, actions } = useContext(Context);
+    useEffect(()=>{
+      actions.listTickets()
+  },[])
 
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -21,19 +25,17 @@ const Cart =()=>{
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
     
-    const { store, actions } = useContext(Context);
-    useEffect(()=>{
-        actions.listTickets()
-    },[])
+
+    
     const cartSize={
         width: 30+"px",
         height: 30+"px"
     }
 
-    return(<>
+  return (<>
     <div>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-      <FaShoppingCart style={cartSize}/>
+        <FaShoppingCart style={cartSize} />
       </Button>
       <Popover
         id={id}
@@ -44,27 +46,29 @@ const Cart =()=>{
           vertical: 'bottom',
           horizontal: 'left',
         }}
-      >{store.cart?store.cart.map((ticket)=>{
+      >{store.cart ? store.cart.map((ticket) => {
         return <div key={ticket.tickedId}>
-        <TicketInCart 
-        origin={ticket.origin}
-        destination={ticket.destination}
-        departTime={ticket.departTime}
-        arrival={ticket.arrival}
-        ticketId={ticket.ticketId}
-        passengers={ticket.passengers}
-        
-    />
+          <TicketInCart
+            origin={ticket.origin}
+            destination={ticket.destination}
+            departTime={ticket.departTime}
+            arrival={ticket.arrival}
+            ticketId={ticket.ticketId}
+            passengers={ticket.passengers}
+
+          />
+        </div>
+      }) : "...loading"}
+      <div className="d-flex justify-content-end m-1">
+    <button type="button" className="btn btn-success" hidden={store.cart.length>0?false:true}>
+      Checkout
+    </button>
     </div>
-      }):"...loading"}
-        
       </Popover>
     </div>
-{/*     <button type="button" className="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
-    <FaShoppingCart style={cartSize}/>
-  </button>  */}
-    </>
-    );
+
+  </>
+  );
 };
 
 export default Cart;

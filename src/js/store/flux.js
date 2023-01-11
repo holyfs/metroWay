@@ -50,10 +50,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = store.cart.filter((item) => item.ticketId !== ticketId);
 				setStore({ ...store, cart: data });
 			},
-			numFavorites: () => {
-				const store = getStore();
-				return store.favorites.length;
-			},
 
 		}
 	};
