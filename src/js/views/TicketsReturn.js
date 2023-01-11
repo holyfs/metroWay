@@ -7,17 +7,18 @@ import { Context } from "../store/appContext";
 const TicketsReturn=()=>{
      const { store, actions } = useContext(Context);
     useEffect(()=>{
-        actions.GetTickets(store.travelInfoStore, train_results)
+        actions.GetTickets(store.travelInfoStore, train_results);
     },[])
+
     return (
         <>
             <div className="container fluid">
                 <div className="d-flex justify-content-evenly">
                 <div className="row mt-5">
                     <div className="col">
+                        <h3 className="mb-2 mt-2">Selected ticket</h3>
                         {store.cart.length>0?store.cart.map((ticket)=>{
-                            return <div key={ticket.flight_id}>
-                                <h3 className="mb-2 mt-2">Selected ticket</h3>
+                            return <div key={ticket.ticketId}>
                             <TicketGo 
                                 origin={ticket.origin}
                                 destination={ticket.destination}
@@ -26,7 +27,7 @@ const TicketsReturn=()=>{
                                 ticketId={ticket.ticketId}
                                 passengers={ticket.passengers}/>
                                 </div>
-                            }): <div className="mx-auto text-center mt-2"><h3>There are no tickets </h3></div>}
+                            }): <div className="mx-auto text-center mt-2" style={{"color":"red"}}><h5>No tickets selected </h5></div>}
                     </div>
                     <div className="col">
                         <h3 className="mb-2 mt-2">These are the available trains...</h3>
