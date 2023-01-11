@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import AvailableTrains from "../components/AvailableTrains.jsx";
-import UserSearch from "../components/UserSearch.jsx";
+import TicketGo from "../components/TicketGo.jsx";
 import train_results from "../../assets/variables/train_results.json"
 import { Context } from "../store/appContext";
 
@@ -15,7 +15,18 @@ const TicketsReturn=()=>{
                 <div className="d-flex justify-content-evenly">
                 <div className="row mt-5">
                     <div className="col">
-                        <UserSearch />
+                        {store.cart.length>0?store.cart.map((ticket)=>{
+                            return <div key={ticket.flight_id}>
+                                <h3 className="mb-2 mt-2">Selected ticket</h3>
+                            <TicketGo 
+                                origin={ticket.origin}
+                                destination={ticket.destination}
+                                departTime={ticket.departTime}
+                                arrival={ticket.arrival}
+                                ticketId={ticket.ticketId}
+                                passengers={ticket.passengers}/>
+                                </div>
+                            }): <div className="mx-auto text-center mt-2"><h3>There are no tickets </h3></div>}
                     </div>
                     <div className="col">
                         <h3 className="mb-2 mt-2">These are the available trains...</h3>
