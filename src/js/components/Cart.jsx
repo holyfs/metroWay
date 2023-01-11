@@ -46,8 +46,8 @@ const Cart =()=>{
           vertical: 'bottom',
           horizontal: 'left',
         }}
-      >{store.cart ? store.cart.map((ticket) => {
-        return <div key={ticket.tickedId}>
+      >{store.cart.length>0 ? store.cart.map((ticket) => {
+        return <div key={ticket.ticketId}>
           <TicketInCart
             origin={ticket.origin}
             destination={ticket.destination}
@@ -58,7 +58,7 @@ const Cart =()=>{
 
           />
         </div>
-      }) : "...loading"}
+      }) : ""}
       <div className="d-flex justify-content-end m-1">
     <button type="button" className="btn btn-success" hidden={store.cart.length>0?false:true}>
       Checkout
