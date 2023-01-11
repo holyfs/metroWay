@@ -4,7 +4,7 @@ import UserSearch from "../components/UserSearch.jsx";
 import train_results from "../../assets/variables/train_results.json"
 import { Context } from "../store/appContext";
 
-const Tickets=()=>{
+const TicketsDeparture=()=>{
     const { store, actions } = useContext(Context);
     useEffect(()=>{
         actions.GetTickets(store.travelInfoStore, train_results)
@@ -19,8 +19,8 @@ const Tickets=()=>{
                     </div>
                     <div className="col">
                         <h3 className="mb-2 mt-2">These are the available trains...</h3>
-                        {store.availableTickets ? store.availableTickets.map((ticket, index) => {
-                            return <><div key={index} className="mt-2 mb-1">
+                        {store.availableTickets ? store.availableTickets.map((ticket) => {
+                            return <div key={ticket.flight_id} className="mt-2 mb-1">
                                 <AvailableTrains
                                     origin={ticket.origin}
                                     destination={ticket.destination}
@@ -28,7 +28,7 @@ const Tickets=()=>{
                                     departTime={ticket.date_time_depart}
                                     ticketId={ticket.flight_id}
                                     passengers={store.travelInfoStore.number_of_passengers}
-                                /></div></>
+                                /></div>
                         }) : "loading..."}
 
                     </div>
@@ -39,4 +39,4 @@ const Tickets=()=>{
     );
 };
 
-export default Tickets;
+export default TicketsDeparture;
